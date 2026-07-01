@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class Category {
-  final String name;
+  final String title;
   final IconData icon;
-  const Category({required this.name, required this.icon});
+  final Widget screen;
+
+  const Category({
+    required this.title,
+    required this.icon,
+    required this.screen,
+  });
 }

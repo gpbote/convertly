@@ -12,25 +12,19 @@ class ResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
-              'Converted Value',
-              style: theme.textTheme.titleMedium,
+            const Text(
+              'Result',
+              style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 12),
-            SelectableText(
+            const SizedBox(height: 8),
+            Text(
               '${value.toStringAsFixed(4)} $unit',
-              textAlign: TextAlign.center,
-              style: theme.textTheme.headlineMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 24),
             ),
           ],
         ),

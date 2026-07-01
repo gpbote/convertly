@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../features/home/home_screen.dart';
+
 import 'theme.dart';
+import '../features/home/home_screen.dart';
 
 class ConvertlyApp extends StatelessWidget {
   const ConvertlyApp({super.key});
@@ -8,8 +9,8 @@ class ConvertlyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Convertly',
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       home: const HomeScreen(),
     );

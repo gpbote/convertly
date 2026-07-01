@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../converter/screens/weight_converter_screen.dart';
+import 'widgets/category_card.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -8,33 +9,28 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Convertly'),
-      ),
-      body: ListView(
+      appBar: AppBar(title: const Text('Convertly')),
+      body: Padding(
         padding: const EdgeInsets.all(16),
-        children: [
-          Text(
-            'Converters',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          const SizedBox(height: 16),
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.scale),
-              title: const Text('Weight'),
-              subtitle: const Text('kg, g, lb, oz'),
-              trailing: const Icon(Icons.chevron_right),
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 16,
+          mainAxisSpacing: 16,
+          children: [
+            ConverterCategoryCard(
+              title: 'Weight',
+              icon: Icons.scale,
               onTap: () {
-                Navigator.of(context).push(
+                Navigator.push(
+                  context,
                   MaterialPageRoute(
                     builder: (_) => const WeightConverterScreen(),
                   ),
                 );
               },
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
