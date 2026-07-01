@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
+
 class Category {
   final String title;
   final String subtitle;
-  final dynamic icon;
-  final dynamic screen;
+  final IconData icon;
+  final Widget screen;
 
   const Category({
     required this.title,

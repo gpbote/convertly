@@ -1,0 +1,78 @@
+import 'package:flutter/material.dart';
+
+import '../services/area_converter.dart';
+import '../widgets/result_card.dart';
+import '../widgets/string_unit_dropdown.dart';
+
+class AreaConverterScreen extends StatefulWidget {
+  const AreaConverterScreen({super.key});
+
+  @override
+  State<AreaConverterScreen> createState() => _AreaConverterScreenState();
+}
+
+class _AreaConverterScreenState extends State<AreaConverterScreen> {
+  final TextEditingController _controller = TextEditingController();
+
+  final List<String> _units = AreaConverter.units;
+
+  late String _from = _units.first;
+  late String _to = _units[1];
+
+  double _result = 0;
+
+  void _convert() {
+    final value = double.tryParse(_controller.text) ?? 0;
+    setState(() {
+      _result = AreaConverter.convert(
+        from: _from,
+        to: _to,
+        value: value,
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Area Converter')),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
+        child: Column(
+          children: [
+            TextField(
+              controller: _controller,
+              keyboardType: const TextInputType.numberWithOptions(decimal: true),
+              decoration: const InputDecoration(
+                labelText: 'Area',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 16),
+            StringUnitDropdown(
+              initialUnit: _from,
+              units: _units,
+              onChanged: (v) => _from = v!,
+            ),
+            const SizedBox(height: 12),
+            StringUnitDropdown(
+              initialUnit: _to,
+              units: _units,
+              onChanged: (v) => _to = v!,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _convert,
+              child: const Text('Convert'),
+            ),
+            const SizedBox(height: 20),
+            ResultCard(
+              value: _result,
+              unit: _to,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
