@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../features/home/home_screen.dart';
 import 'theme.dart';
 
 class ConvertlyApp extends StatelessWidget {
@@ -8,14 +8,10 @@ class ConvertlyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Convertly',
       debugShowCheckedModeBanner: false,
+      title: 'Convertly',
       theme: AppTheme.light,
-      home: const Scaffold(
-        body: Center(
-          child: Text('Convertly'),
-        ),
-      ),
+      home: const HomeScreen(),
     );
   }
 }

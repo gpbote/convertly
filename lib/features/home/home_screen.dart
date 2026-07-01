@@ -6,16 +6,11 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Convertly'),
-      ),
+      appBar: AppBar(title: const Text('Convertly')),
       body: const Center(
         child: Text(
-          'Welcome to Convertly',
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
-          ),
+          'Sprint 1 - Home Screen',
+          style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold),
         ),
       ),
     );
